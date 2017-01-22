@@ -1,0 +1,22 @@
+double cijena(int ulaz, int izlaz, int kategorija)
+{
+    FILE *fp1;
+	int udaljenost = 0;
+    if ((fp1=fopen("udaljenosti.txt", "r"))!=NULL)
+    {
+        char pom[100];
+        char broj[4]={};
+        int i;
+        for(i=0; i<ulaz-1;i++)
+            fgets(pom,100,fp1);
+        for(i=0; i<izlaz; i++)
+            fgets(broj, 4, fp1);
+        udaljenost = atoi(broj);
+        printf("Udaljenost: %d\n\n", udaljenost);
+        fclose(fp1);
+        double putarina = (udaljenost * kategorija * 0.1);
+        return putarina;
+	}
+    else printf("Greska pri citanju udaljenosti!\n");
+    return 0;
+}
